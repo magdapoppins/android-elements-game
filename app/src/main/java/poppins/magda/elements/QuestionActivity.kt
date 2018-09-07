@@ -21,11 +21,11 @@ class QuestionActivity : AppCompatActivity() {
             "S"
     )
     val element_names = arrayOf(
-            "Bromi",
-            "Alumiini",
-            "Kupari",
-            "Pii",
-            "Rikki"
+            "bromi",
+            "alumiini",
+            "kupari",
+            "pii",
+            "rikki"
     )
 
     var correct_answer = ""
@@ -48,17 +48,17 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun check_answer(view: View){
-        Toast.makeText(this, "Tarkistetaan!", Toast.LENGTH_SHORT).show()
         val answerText = findViewById<EditText>(R.id.answer_box)
         val answer = answerText.text.toString()
 
-        if (answer == correct_answer){
+        if (answer == correct_answer.toLowerCase()){
+            Toast.makeText(this, "Oikein!", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, QuestionActivity::class.java).apply {
                 putExtra(EXTRA_QUESTION, answer)
             }
             startActivity(intent)
         } else {
-            Toast.makeText(this, "Ei mennyt nappiin!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ei mennyt nappiin :/",Toast.LENGTH_SHORT).show()
         }
     }
 }

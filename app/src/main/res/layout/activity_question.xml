@@ -23,7 +23,8 @@
             android:id="@+id/question_textbox"
             android:layout_width="match_parent"
             android:layout_height="145dp"
-            android:text="TextView" />
+            android:paddingLeft="60dp"
+            android:paddingTop="40dp" />
     </android.support.v7.widget.CardView>
 
     <EditText
@@ -34,7 +35,6 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nimi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
