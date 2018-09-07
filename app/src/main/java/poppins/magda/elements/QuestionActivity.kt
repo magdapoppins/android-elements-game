@@ -1,8 +1,14 @@
 package poppins.magda.elements
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.EditText
+import kotlinx.android.synthetic.main.activity_question.*
 import java.util.Random
+
+const val EXTRA_QUESTION = "poppins.magda.elements.QUESTION"
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -10,9 +16,9 @@ class QuestionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
-        val question_index = rand(0, element_codes.size)
-        val question = element_codes[question_index]
-        val answer = element_names[question_index]
+        val question_start_index = rand(0, element_codes.size)
+
+        question_textbox.append(element_codes[question_start_index])
 
     }
 
@@ -35,5 +41,14 @@ class QuestionActivity : AppCompatActivity() {
 
     fun rand(from: Int, to: Int) : Int {
         return random.nextInt(to - from) + from
+    }
+
+    fun check_question(view: View){
+        val answerText = findViewById<EditText>(R.id.answer_box)
+        val answer = answerText.text.toString()
+        val intent = Intent(this, QuestionActivity::class.java).apply {
+            putExtra(EXTRA_QUESTION, answer)
+        }
+        startActivity(intent)
     }
 }
