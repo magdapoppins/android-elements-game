@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Alkuaineet</string>
+    <string name="start_btn">Aloita peli!</string>
+    <string name="start_text">Alkuaineiden jaksollinen järjestelmä</string>
+</resources>
