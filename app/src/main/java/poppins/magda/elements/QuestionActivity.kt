@@ -9,7 +9,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_question.*
 import java.util.Random
 
-const val EXTRA_QUESTION = "poppins.magda.elements.QUESTION"
+const val PREV_QUESTION = "poppins.magda.elements.QUESTION"
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -33,12 +33,18 @@ class QuestionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
+        var question_index = 0
 
-        var question_index = rand(0, element_codes.size)
+        val answer = intent.getIntExtra(PREV_QUESTION, -1)
+
+        if (answer >= 0){
+            question_index = answer + 1
+        } else {
+            question_index = rand(0, element_codes.size)
+        }
+
         correct_answer = element_names[question_index]
-
         question_textbox.append(element_codes[question_index])
-
     }
 
     val random = Random()
@@ -53,12 +59,21 @@ class QuestionActivity : AppCompatActivity() {
 
         if (answer == correct_answer.toLowerCase()){
             Toast.makeText(this, "Oikein!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, QuestionActivity::class.java).apply {
-                putExtra(EXTRA_QUESTION, answer)
+            if (correct_answer == "rikki"){
+                end_game(view)
+            } else {
+                val intent = Intent(this, QuestionActivity::class.java).apply {
+                    putExtra(PREV_QUESTION, element_names.indexOf(answer))
+                }
+                startActivity(intent)
             }
-            startActivity(intent)
         } else {
             Toast.makeText(this, "Ei mennyt nappiin :/",Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun end_game(view: View){
+        val intent = Intent(this, EndActivity::class.java).apply {  }
+        startActivity(intent)
     }
 }
