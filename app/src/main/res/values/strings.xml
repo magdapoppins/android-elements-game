@@ -2,5 +2,7 @@
     <string name="app_name">Alkuaineet</string>
     <string name="start_btn">Aloita peli!</string>
     <string name="submit_btn">Tarkista</string>
+    <string name="again_btn">Pelaa uudestaan!</string>
+    <string name="end_text">Onneksi olkoon, pääsit loppuun saakka! Pistemääräsi oli: </string>
     <string name="start_text">Alkuaineiden jaksollinen järjestelmä</string>
 </resources>

@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_question.*
 import java.util.Random
 
 const val PREV_QUESTION = "poppins.magda.elements.QUESTION"
+const val SCORE_COUNT = "poppins.magda.elements.SCORE"
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -64,6 +65,7 @@ class QuestionActivity : AppCompatActivity() {
             } else {
                 val intent = Intent(this, QuestionActivity::class.java).apply {
                     putExtra(PREV_QUESTION, element_names.indexOf(answer))
+                    putExtra(SCORE_COUNT, 1)
                 }
                 startActivity(intent)
             }
@@ -73,7 +75,9 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun end_game(view: View){
-        val intent = Intent(this, EndActivity::class.java).apply {  }
+        val intent = Intent(this, EndActivity::class.java).apply {
+            putExtra(SCORE_COUNT, 1)
+        }
         startActivity(intent)
     }
 }
